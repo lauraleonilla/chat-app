@@ -2,9 +2,6 @@ version: 2.1
 orbs:
   docker: circleci/docker@1.0.0
 jobs:
-  build:
-    docker:
-      - image: lauraleonilla/docker-course-1.15
   deploy:
     docker:
       - image: lauraleonilla/docker-course-1.15
