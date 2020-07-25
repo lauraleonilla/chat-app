@@ -5,22 +5,6 @@ jobs:
   build:
     docker:
       - image: lauraleonilla/docker-course-1.15
-    working_directory: /app/
-steps:
-    - checkout
-- setup_remote_docker:
-      docker_layer_caching: true
-  - run:
-      name: Install Docker Compose
-      command: |
-        curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-        chmod +x ~/docker-compose
-        sudo mv ~/docker-compose /usr/local/bin/docker-compose
-- run:
-      name: Start container and verify it's working
-      command: |
-        set -x
-        docker-compose up -d
   deploy:
     docker:
       - image: lauraleonilla/docker-course-1.15
