@@ -12,5 +12,5 @@ workflows:
         - run:
             name: Deploy Master to Heroku
             command: |
-            docker login --username=$DOCKER_LOGIN --password=$DOCKER_PASSWORD registry.heroku.com
-            docker push registry.heroku.com/$HEROKU_APP_NAME/web
+              docker login --username=$DOCKER_LOGIN --password=$DOCKER_PASSWORD registry.heroku.com
+              docker push registry.heroku.com/$HEROKU_APP_NAME/web
