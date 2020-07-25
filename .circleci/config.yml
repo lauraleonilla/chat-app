@@ -1,6 +1,9 @@
 version: 2
 
 jobs:
+  build:
+    docker:
+      - image: lauraleonilla/docker-course-1.15
   deploy:
     docker:
       - image: lauraleonilla/docker-course-1.15
