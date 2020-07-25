@@ -7,3 +7,10 @@ workflows:
       - docker/publish:
           image: lauraleonilla/docker-course-1.15
           tag: 'latest'
+    steps:
+        - checkout
+        - run:
+            name: Deploy Master to Heroku
+            command: |
+            docker login --username=$DOCKER_LOGIN --password=$DOCKER_PASSWORD registry.heroku.com
+            docker push registry.heroku.com/$HEROKU_APP_NAME/web
