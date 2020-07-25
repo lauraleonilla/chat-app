@@ -2,6 +2,15 @@ version: 2.1
 orbs:
   docker: circleci/docker@1.0.0
 jobs:
+  build:
+    docker:
+      - image: lauraleonilla/docker-course-1.15
+    steps:
+      - checkout
+      - run:
+          name: Docker compose
+          command: |
+            docker-compose up
   deploy:
     docker:
       - image: lauraleonilla/docker-course-1.15
