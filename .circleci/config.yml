@@ -6,7 +6,9 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      - build
+      build:
+        docker:
+          - image: buildpack-deps:trusty
       - heroku/deploy-via-git:
           requires:
             - build
