@@ -1,7 +1,30 @@
 version: 2.1
-orbs:
-  heroku: circleci/heroku@0.0.10
+
+jobs:
+  build:
+    docker:
+      - image: lauraleonilla/chat-app
+    steps:
+      - checkout
+      - run: docker-compose up
+  deploy:
+    docker:
+      - image: lauraleonilla/chat-app
+    steps:
+      - checkout
+      - run: heroku container:login
+      - run: heroku create
+      - run: heroku container:push web
+      - run: heroku container:release web
+
 workflows:
-  heroku_deploy:
+  build:
     jobs:
-      - heroku/deploy-via-git
+      - build
+      - hold:
+          type: approval
+          requires:
+            - build
+      - deploy:
+          requires:
+            - hold
