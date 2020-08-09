@@ -4,7 +4,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - run: release-docker-image
+      - run: heroku container:login
 orbs:
   heroku: circleci/heroku@0.0.10
 version: 2.1
