@@ -1,17 +1,12 @@
 version: 2.0
 
-machine:
-  services:
-    - docker
-
-dependencies:
-  cache_directories:
-    - ~/docker
+orbs:
+  heroku: circleci/heroku@1.2.0
 
 jobs:
-  deployment:
-    branch: master
-    commands:
-      - docker login --email=$DOCKER_LOGIN --username=$DOCKER_LOGIN --password=$DOCKER_PASSWORD registry.heroku.com
-      - docker build --rm=false -t registry.heroku.com/chat-application-test-app/web .
-      - docker push registry.heroku.com/chat-application-test-app/web:first
+  deploy:
+    heroku:
+      - run: heroku container:login
+      - run: heroku create
+      - run: heroku container:push web
+      - run: heroku container:release web
