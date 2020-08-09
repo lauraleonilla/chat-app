@@ -1,12 +1,14 @@
-version: 2.0
-
-orbs:
-  heroku: circleci/heroku@1.2.0
-
 jobs:
   deploy:
-    heroku:
-      - run: heroku container:login
-      - run: heroku create
-      - run: heroku container:push web
-      - run: heroku container:release web
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run: release-docker-image
+orbs:
+  heroku: circleci/heroku@0.0.10
+version: 2.1
+workflows:
+  heroku_deploy:
+    jobs:
+      - deploy
