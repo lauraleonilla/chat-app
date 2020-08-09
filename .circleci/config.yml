@@ -2,9 +2,9 @@ jobs:
   deploy:
     executor: heroku/default
     steps:
-      - setup_remote_docker
       - checkout
       - heroku/install
+      - run: curl -fsSL https://get.docker.com -o get-docker.sh
       - run: heroku container:login
 orbs:
   heroku: circleci/heroku@0.0.10
