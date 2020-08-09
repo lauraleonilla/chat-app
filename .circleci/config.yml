@@ -4,7 +4,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - run: heroku container:release web
+      - run: heroku container:release web --app chat-application-test-app
 orbs:
   heroku: circleci/heroku@0.0.10
   docker: circleci/docker@1.0.0
