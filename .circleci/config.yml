@@ -1,14 +1,11 @@
 version: 2.1
 
-orbs:
-  heroku: circleci/heroku@0.0.10
-
 jobs:
   deploy:
     docker:
       - image: lauraleonilla/chat-app:first
     steps:
-      - checkout
+      - run: bash .circleci/setup-heroku.sh
       - run: heroku container:login
       - run: heroku create
       - run: heroku container:push web
