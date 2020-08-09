@@ -4,8 +4,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - run: curl -fsSL https://get.docker.com -o get-docker.sh
-      - run: heroku container:login
+      - run: heroku container:release web
 orbs:
   heroku: circleci/heroku@0.0.10
   docker: circleci/docker@1.0.0
