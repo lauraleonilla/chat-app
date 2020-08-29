@@ -1,15 +1,18 @@
 jobs:
   deploy:
+    machine:
+      enabled: true
     executor: heroku/default
+    docker:
+      - image: lauraleonilla/chat-app:latest
     steps:
-      - setup_remote_docker
       - checkout
       - heroku/install
       - run: heroku container:login
       - run: heroku container:release web --app chat-application-test-app
 orbs:
-  heroku: circleci/heroku@0.0.10
   docker: circleci/docker@1.0.0
+  heroku: circleci/heroku@0.0.10
 version: 2.1
 workflows:
   heroku_deploy:
