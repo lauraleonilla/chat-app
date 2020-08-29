@@ -2,7 +2,7 @@ jobs:
   deploy:
     executor: heroku/default
     docker:
-      - image: docker:lauraleonilla/chat-app:latest
+      - image: lauraleonilla/chat-app
     steps:
       - checkout
       - heroku/install
