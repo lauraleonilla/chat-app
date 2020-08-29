@@ -2,6 +2,7 @@ jobs:
   deploy:
     executor: heroku/default
     steps:
+      - setup_remote_docker
       - checkout
       - heroku/install
       - run: heroku container:login
