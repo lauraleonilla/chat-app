@@ -1,7 +1,5 @@
 jobs:
   deploy:
-    machine:
-      enabled: true
     executor: heroku/default
     docker:
       - image: lauraleonilla/chat-app:latest
